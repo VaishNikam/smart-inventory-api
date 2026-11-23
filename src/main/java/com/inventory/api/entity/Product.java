@@ -1,5 +1,10 @@
 package com.inventory.api.entity;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,21 +22,27 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "SKU is required")
+	@Column(nullable = false, unique = true)
     private String sku;
 
-    @Column(nullable = false)
+    @NotBlank(message = "Name is required")
+	@Column(nullable = false)
     private String name;
 
     private String category;
 
-    @Column(nullable = false, precision = 10, scale = 2)
+    @NotNull(message = "Unit price is required")
+	@Positive(message = "Unit price must be greater than 0")
+	@Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal unitPrice;
 
-    @Column(nullable = false)
+    @Min(value = 0, message = "Stock quantity cannot be negative")
+	@Column(nullable = false)
     private int stockQuantity;
 
-    @Column(nullable = false)
+    @Min(value = 0, message = "Reorder level cannot be negative")
+	@Column(nullable = false)
     private int reorderLevel;
 
     public Product() {
