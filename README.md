@@ -12,7 +12,7 @@ In development. Building one feature per day.
 - [x] Project setup (Spring Boot, Maven)
 - [x] Cloud PostgreSQL connection (Neon)
 - [x] Product CRUD
-- [ ] Low-stock alerts
+- [x] Low-stock alerts
 - [ ] Billing with automatic stock deduction
 - [ ] JWT authentication with Admin and Staff roles
 - [ ] Dashboard summary
