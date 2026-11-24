@@ -43,4 +43,15 @@ public class ProductService{
         Product existing = getById(id);
         productRepository.delete(existing);
     }
+    public List<Product> getLowStock() {
+    return productRepository.findLowStockProducts();
+}
+
+public List<Product> getByCategory(String category) {
+    return productRepository.findByCategoryIgnoreCase(category);
+}
+
+public List<Product> searchByName(String name) {
+    return productRepository.findByNameContainingIgnoreCase(name);
+}
 }

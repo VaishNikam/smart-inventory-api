@@ -44,4 +44,18 @@ public class ProductController {
     public void delete(@PathVariable Long id) {
         productService.delete(id);
     }
+    @GetMapping("/low-stock")
+public List<Product> getLowStock() {
+    return productService.getLowStock();
+}
+
+@GetMapping("/category/{category}")
+public List<Product> getByCategory(@PathVariable String category) {
+    return productService.getByCategory(category);
+}
+
+@GetMapping("/search")
+public List<Product> search(@RequestParam String name) {
+    return productService.searchByName(name);
+}
 }
